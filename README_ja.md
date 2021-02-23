@@ -19,62 +19,21 @@ NimBLEライブラリを使って、CSCペリフェラル(ケイデンスセン�
 
 複雑な動作状態を管理するため、ステートマシンを使用しています。
 
-```plantuml
-@startuml
+![Image 1](images/M5StackBleCentral_STM.png)
 
-[*] --> init
-init --> checkfile : NEXT
-init:Accept user request of forget connect device.
-init:entry/ [Push Btn]delete DEVINFO_FILE
-
-checkfile --> scan : NEXT
-checkfile --> keepconnect : KEEPCONNECT
-checkfile:Choice device pre connected or new.
-checkfile:entry/ read DEVINFO_FILE
-checkfile:act/ exist DEVINFO_FILE >KEEPCONNECT
-
-scan --> freeze : FREEZE
-scan --> select : NEXT
-scan:Scan new Advertise devices having target service.
-scan:entry/ scan start
-scan:act/ wait for timeout
-scan:exit/ scan stop
-
-select -->freeze : FREEZE
-select --> scan : LOOP
-select --> saveconfig : NEXT
-select:View device list and User select one. 
-select:entry/ view device list
-select:act/ 1.connect selected device
-select:act/ 2.next one target device >LOOP
-
-saveconfig --> freeze : FREEZE
-saveconfig --> reboot : NEXT
-saveconfig:Save connect device.
-saveconfig:act/ save to DEVINFO_FILE
-
-keepconnect:Reconnect devices and Processing Notify Callback.
-keepconnect:entry/ scan start (forever until get one device)
-keepconnect:act/ 1.wait for scan end
-keepconnect:act/ 2.connect and request notification
-keepconnect:act/ 3.scan start (forever until get one device)
-
-reboot --> [*]
-reboot:esp_restart()
-
-freeze:Halt 
-@enduml
-```
 
 ## Usage
 
 起動するとAdvertiseしているペリフェラルをscanしてユーザに選択してもらうためのデバイス一覧画面を表示します。
+
 ![Image 1](images/M5scanCSC.jpg)
 
 CSCデバイスとHIDデバイスについて順に選択します。
+
 ![Image 1](images/M5scanHID.jpg)
 
 選択完了したらデバイスが内部に登録され、次回起動からは自動的にペリフェラルに接続します。
+
 ![Image 1](images/M5connect.jpg)
 
 再度ペリフェラルを選択したいときには、起動時にボタンを押しておくと内部の登録を初期化します。
