@@ -996,10 +996,10 @@ void initfsm() {
 //End of FSM CONFIG-------------------------------------------------------------------------
 
 void setup() {
-  Serial.println("setup");
-  
   Serial.begin(115200);
   Serial.flush();
+  Serial.println("setup");
+  
   M5.begin();
   M5.Lcd.begin();
   Wire.begin();
