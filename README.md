@@ -15,6 +15,11 @@ Required library.
 * M5Stack_TreeView (version=0.2.14 author=lovyan03)
 * NimBLE-Arduino (version=1.2.0 author=h2zero)
 
+As of 2021/3/17, esp32 needs to use 1.04. (I upgraded to 1.05 and it didn't work (WIP))
+
+![Image 1](images/esp32104.png)
+
+
 ## Design
 
 State Machine  used to manage complex operating states.

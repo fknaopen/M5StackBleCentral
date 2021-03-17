@@ -15,6 +15,11 @@ NimBLEライブラリを使って、CSCペリフェラル(ケイデンスセン�
 * M5Stack_TreeView (version=0.2.14 author=lovyan03)
 * NimBLE-Arduino (version=1.2.0 author=h2zero)
 
+2021/3/17現在、esp32は1.04を使う必要があります。(1.05にバージョンを上げたら動作しませんでした(調査中))
+
+![Image 1](images/esp32104.png)
+
+
 ## Design
 
 複雑な動作状態を管理するため、ステートマシンを使用しています。
