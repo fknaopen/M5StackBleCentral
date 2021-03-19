@@ -18,6 +18,7 @@ NimBLEライブラリを使って、CSCペリフェラル(ケイデンスセン�
 ボードマネージャ
 
 追加のボードマネージャのURLに、M5Stack用URLを指定し、ボードはM5Stack-Core-ESP32を使います
+
 URL = https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json
 
 ![Image 1](images/m5_boardmgr.png)
