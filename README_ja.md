@@ -15,9 +15,11 @@ NimBLEライブラリを使って、CSCペリフェラル(ケイデンスセン�
 * M5Stack_TreeView (version=0.2.14 author=lovyan03)
 * NimBLE-Arduino (version=1.2.0 author=h2zero)
 
-2021/3/17現在、esp32は1.04を使う必要があります。(1.05にバージョンを上げたら動作しませんでした(調査中))
+ボードマネージャ
+追加のボードマネージャのURLに、M5Stack用URLを指定し、ボードはM5Stack-Core-ESP32を使います
+URL = https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json
 
-![Image 1](images/esp32104.png)
+![Image 1](images/m5_boardmgr.png)
 
 
 ## Design
