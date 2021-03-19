@@ -15,9 +15,13 @@ Required library.
 * M5Stack_TreeView (version=0.2.14 author=lovyan03)
 * NimBLE-Arduino (version=1.2.0 author=h2zero)
 
-As of 2021/3/17, esp32 needs to use 1.04. (I upgraded to 1.05 and it didn't work (WIP))
+Board manager
 
-![Image 1](images/esp32104.png)
+Specify the URL for M5Stack as the URL of the additional board manager, and use M5Stack-Core-ESP32 for the board. 
+
+URL = https://m5stack.oss-cn-shenzhen.aliyuncs.com/resource/arduino/package_m5stack_index.json
+
+![Image 1](images/m5_boardmgr.png)
 
 
 ## Design
