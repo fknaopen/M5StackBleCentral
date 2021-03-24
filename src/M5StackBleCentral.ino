@@ -89,6 +89,7 @@ int scanDevice;
 M5TreeView treeView;
 M5TreeView initTreeView = {};
 int devIdx = 0;
+boolean is_selected = false;
 
 // ---- util ----
 boolean check_address( BC_bd_address_t a1, NimBLEAddress a2) {
@@ -279,6 +280,7 @@ class f0_AdvertisedDeviceCallbacks: public NimBLEAdvertisedDeviceCallbacks {
 
 
 void dummyFunc(MenuItem* mi) {
+  is_selected=true;
   Serial.printf("callback Item= <%s> Tag=%d\n",  mi->title.c_str(), mi->tag);
 }
 
@@ -557,14 +559,16 @@ void ent_select() {
   // add no use Item
   treeView.addItem(new MenuItem(BC_DEV_NOUSE, i, dummyFunc));
   Serial.printf("%d %s <>\n", i, BC_DEV_NOUSE);
-  
+
+  is_selected=false;
   treeView.begin();
   Serial.printf("    treeView.begin()\n");
 }
 
 void act_select() {
+  is_selected=false;
   MenuItem* mi = treeView.update();
-  if (mi != NULL) {
+  if (mi != NULL && is_selected) {
     if (mi->tag < advDevices.size()) {
       devIdx = mi->tag;
       Serial.printf("%d %s %s\n", devIdx, advDevices.at(devIdx)->getName().c_str(), advDevices.at(devIdx)->getAddress().toString().c_str());
