@@ -251,11 +251,14 @@ class f0_AdvertisedDeviceCallbacks: public NimBLEAdvertisedDeviceCallbacks {
             Serial.print("Found Our Service: ");
             Serial.println(serviceUUID.toString().c_str());
             
+            bool bd_exist = false;
             for (int bd=0; bd<BC_BD_NUM; bd++) {
-              
               if (check_address(savedata.dev[bd].address, advertisedDevice->getAddress())) {
+                  bd_exist = true;
                   Serial.printf("onResult:device skip.\n");
-              } else {
+              }
+            }
+            if (!bd_exist) {
                   if (advDevices.size() == 0) {
                     advDevice = advertisedDevice;
                     advDevices.push_back(advertisedDevice);
@@ -271,7 +274,6 @@ class f0_AdvertisedDeviceCallbacks: public NimBLEAdvertisedDeviceCallbacks {
                     advDevices.push_back(advertisedDevice);
                   }
                   Serial.printf("onResult:myDevices=%d\n", advDevices.size());
-              }
             }
         }
     }
